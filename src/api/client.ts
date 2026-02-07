@@ -20,7 +20,9 @@ import type {
   DataResponse,
 } from "@/types/api";
 
-const API_BASE = "/api/v1";
+import { API_BASE as ENV_API_BASE } from "@/lib/env";
+
+const API_BASE = `${ENV_API_BASE}/api/v1`;
 
 class ApiError extends Error {
   constructor(
