@@ -7,6 +7,7 @@ import { SalesChart } from "@/components/charts/SalesChart";
 import { WorldPriceTable } from "@/components/item/WorldPriceTable";
 import { ListingsTable } from "@/components/item/ListingsTable";
 import { useItem } from "@/hooks/useItems";
+import { getItemNameZh } from "@/lib/item-names";
 
 export function ItemDetailPage() {
   const { itemId: itemIdParam } = useParams<{ itemId: string }>();
@@ -39,7 +40,7 @@ export function ItemDetailPage() {
   }
 
   return (
-    <PageShell title={item.name_zh}>
+    <PageShell title={getItemNameZh(itemId, item.name_zh)}>
       <div className="flex flex-wrap items-center gap-3">
         <p className="text-sm text-zinc-400">{item.name_en}</p>
         {item.category_name && (

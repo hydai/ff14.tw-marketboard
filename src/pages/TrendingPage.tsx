@@ -4,6 +4,7 @@ import { PageShell } from "@/components/layout/PageShell";
 import { useTrending } from "@/hooks/useAnalytics";
 import { formatGil } from "@/lib/format";
 import { TREND_DIRECTIONS, TREND_PERIODS } from "@/lib/constants";
+import { getItemNameZh } from "@/lib/item-names";
 import type { TrendDirection, TrendPeriod } from "@/types/api";
 
 export function TrendingPage() {
@@ -92,7 +93,7 @@ export function TrendingPage() {
                     to={`/items/${item.item_id}`}
                     className="text-gold-400 hover:text-gold-300 hover:underline"
                   >
-                    {item.item_name}
+                    {getItemNameZh(item.item_id, item.item_name)}
                   </Link>
                 </td>
                 <td className="px-4 py-3 text-zinc-300">{formatGil(item.current_price)}</td>

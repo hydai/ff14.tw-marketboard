@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { PageShell } from "@/components/layout/PageShell";
 import { useDeals } from "@/hooks/useAnalytics";
 import { formatGil } from "@/lib/format";
+import { getItemNameZh } from "@/lib/item-names";
 import { WORLDS } from "@/lib/constants";
 
 export function DealsPage() {
@@ -96,7 +97,7 @@ export function DealsPage() {
                     to={`/items/${item.item_id}`}
                     className="text-gold-400 hover:text-gold-300 hover:underline"
                   >
-                    {item.item_name}
+                    {getItemNameZh(item.item_id, item.item_name)}
                   </Link>
                 </td>
                 <td className="px-4 py-3 text-zinc-300">{item.world_name}</td>

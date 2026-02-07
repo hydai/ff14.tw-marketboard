@@ -4,13 +4,14 @@ import { GilAmount } from "@/components/ui/GilAmount";
 import { ItemLink } from "@/components/ui/ItemLink";
 import { formatPercent } from "@/lib/format";
 import { useArbitrage } from "@/hooks/useAnalytics";
+import { getItemNameZh } from "@/lib/item-names";
 import type { ArbitrageItem } from "@/types/api";
 
 const columns: Column<ArbitrageItem>[] = [
   {
     key: "item_name",
     header: "物品",
-    render: (row) => <ItemLink itemId={row.item_id} name={row.item_name} />,
+    render: (row) => <ItemLink itemId={row.item_id} name={getItemNameZh(row.item_id, row.item_name)} />,
   },
   {
     key: "buy",

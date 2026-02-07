@@ -3,6 +3,7 @@ import { Link } from "react-router";
 import { PageShell } from "@/components/layout/PageShell";
 import { useArbitrage } from "@/hooks/useAnalytics";
 import { formatGil } from "@/lib/format";
+import { getItemNameZh } from "@/lib/item-names";
 
 export function ArbitragePage() {
   const [minProfit, setMinProfit] = useState<number | undefined>();
@@ -94,7 +95,7 @@ export function ArbitragePage() {
                     to={`/items/${item.item_id}`}
                     className="text-gold-400 hover:text-gold-300 hover:underline"
                   >
-                    {item.item_name}
+                    {getItemNameZh(item.item_id, item.item_name)}
                   </Link>
                 </td>
                 <td className="px-4 py-3 text-zinc-300">{item.buy_world}</td>

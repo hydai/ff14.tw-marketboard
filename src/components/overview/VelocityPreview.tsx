@@ -3,13 +3,14 @@ import { DataTable, type Column } from "@/components/ui/DataTable";
 import { GilAmount } from "@/components/ui/GilAmount";
 import { ItemLink } from "@/components/ui/ItemLink";
 import { useVelocity } from "@/hooks/useAnalytics";
+import { getItemNameZh } from "@/lib/item-names";
 import type { VelocityItem } from "@/types/api";
 
 const columns: Column<VelocityItem>[] = [
   {
     key: "item_name",
     header: "物品",
-    render: (row) => <ItemLink itemId={row.item_id} name={row.item_name} />,
+    render: (row) => <ItemLink itemId={row.item_id} name={getItemNameZh(row.item_id, row.item_name)} />,
   },
   {
     key: "sales_per_day",
