@@ -7,17 +7,6 @@ interface ListingsTableProps {
   itemId: number;
 }
 
-const RETAINER_CITIES: Record<number, string> = {
-  1: "利姆薩",
-  2: "格里達尼亞",
-  3: "烏爾達哈",
-  4: "伊修加德",
-  5: "黃金港",
-  10: "水晶都",
-  11: "舊薩雷安",
-  12: "圖萊尤拉",
-};
-
 export function ListingsTable({ itemId }: ListingsTableProps) {
   const [hqOnly, setHqOnly] = useState(false);
   const { data, isLoading } = useListings(itemId);
@@ -56,13 +45,12 @@ export function ListingsTable({ itemId }: ListingsTableProps) {
               <th className="px-4 py-3">總價</th>
               <th className="px-4 py-3">HQ</th>
               <th className="px-4 py-3">雇員</th>
-              <th className="px-4 py-3">城市</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-zinc-800">
             {listings.length === 0 ? (
               <tr>
-                <td colSpan={7} className="px-4 py-8 text-center text-zinc-500">
+                <td colSpan={6} className="px-4 py-8 text-center text-zinc-500">
                   無上架資料
                 </td>
               </tr>
@@ -88,9 +76,6 @@ export function ListingsTable({ itemId }: ListingsTableProps) {
                     )}
                   </td>
                   <td className="px-4 py-3 text-zinc-400">{l.retainer_name}</td>
-                  <td className="px-4 py-3 text-zinc-400">
-                    {RETAINER_CITIES[l.retainer_city] ?? l.retainer_city}
-                  </td>
                 </tr>
               ))
             )}
