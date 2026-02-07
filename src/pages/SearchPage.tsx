@@ -11,14 +11,14 @@ export function SearchPage() {
   const [page, setPage] = useState(1);
 
   const category = categoryId ? Number(categoryId) : undefined;
-  const { data, isLoading } = useItems({
+  const { data } = useItems({
     search: search || undefined,
     category,
     page,
     limit: 20,
   });
 
-  const totalPages = data ? Math.ceil(data.total / data.limit) : 1;
+  const totalPages = Math.ceil(data.total / data.limit);
 
   return (
     <PageShell title="物品搜尋">
@@ -56,13 +56,7 @@ export function SearchPage() {
             </tr>
           </thead>
           <tbody className="divide-y divide-zinc-800">
-            {isLoading ? (
-              <tr>
-                <td colSpan={4} className="px-4 py-8 text-center text-zinc-500">
-                  載入中...
-                </td>
-              </tr>
-            ) : !data?.data.length ? (
+            {!data.data.length ? (
               <tr>
                 <td colSpan={4} className="px-4 py-8 text-center text-zinc-500">
                   無搜尋結果

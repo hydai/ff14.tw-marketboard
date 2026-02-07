@@ -1,5 +1,10 @@
+import { useMemo } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { fetchItems, fetchItem } from "@/api/client";
+import { fetchItem } from "@/api/client";
+import allItems from "@/data/items.json";
+import type { Item, PaginatedResponse } from "@/types/api";
+
+const typedItems = allItems as Item[];
 
 export function useItems(params?: {
   search?: string;
@@ -7,11 +12,33 @@ export function useItems(params?: {
   page?: number;
   limit?: number;
 }) {
-  return useQuery({
-    queryKey: ["items", params],
-    queryFn: () => fetchItems(params),
-    enabled: params?.search !== undefined ? params.search.length > 0 : true,
-  });
+  const search = params?.search?.toLowerCase();
+  const category = params?.category;
+  const page = params?.page ?? 1;
+  const limit = params?.limit ?? 20;
+
+  const data = useMemo<PaginatedResponse<Item>>(() => {
+    let filtered = typedItems;
+
+    if (search) {
+      filtered = filtered.filter(
+        (item) =>
+          item.name_zh.toLowerCase().includes(search) ||
+          item.name_en.toLowerCase().includes(search),
+      );
+    }
+
+    if (category !== undefined) {
+      filtered = filtered.filter((item) => item.category_id === category);
+    }
+
+    const start = (page - 1) * limit;
+    const paged = filtered.slice(start, start + limit);
+
+    return { data: paged, total: filtered.length, page, limit };
+  }, [search, category, page, limit]);
+
+  return { data, isLoading: false };
 }
 
 export function useItem(itemId: number) {
