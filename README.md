@@ -25,7 +25,7 @@ A React SPA dashboard for Final Fantasy XIV Taiwan datacenter (陸行鳥) market
 - **React Router 7**
 - **TanStack React Query 5** (auto-refresh: 30s status, 2min analytics)
 - **Recharts 2** (price history LineChart, sales ScatterChart)
-- **Cloudflare Pages** (deployment)
+- **GitHub Pages** (deployment via GitHub Actions)
 
 ## Development
 
@@ -50,18 +50,11 @@ The Vite dev server runs on `http://localhost:5173/` and proxies `/api/*` reques
 
 ## Deployment
 
-Deployed on **Cloudflare Pages** with GitHub integration. Every push to `master` triggers an auto-build.
+Deployed on **GitHub Pages** via GitHub Actions. Every push to `master` triggers the workflow at `.github/workflows/deploy.yml`.
 
-### Cloudflare Pages build settings
-
-| Setting | Value |
-|---|---|
-| Build command | `npm run build` |
-| Build output directory | `dist` |
-| `NODE_VERSION` | `20` |
-| `VITE_API_BASE` | `https://marketboard-api.ff14.tw` |
-
-### Environment variable
+- Custom domain: `marketboard.ff14.tw` (via `public/CNAME`)
+- SPA routing: `404.html` copy of `index.html` for client-side routing
+- Env vars: `VITE_API_BASE` set in `.env.production`
 
 | Variable | Dev (default) | Production |
 |---|---|---|
