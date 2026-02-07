@@ -26,8 +26,8 @@ export function PriceSummaryCards({ itemId }: PriceSummaryCardsProps) {
   const cards = [
     { label: "最低NQ價", value: summary?.minPriceNQ ?? null },
     { label: "最低HQ價", value: summary?.minPriceHQ ?? null },
-    { label: "平均NQ價", value: summary?.avgPriceNQ ?? null },
-    { label: "平均HQ價", value: summary?.avgPriceHQ ?? null },
+    { label: "中位NQ價", value: summary?.avgPriceNQ ?? null },
+    { label: "中位HQ價", value: summary?.avgPriceHQ ?? null },
     { label: "上架數", value: summary?.listingCount ?? null, raw: true },
     { label: "最便宜伺服器", value: null, text: summary?.cheapestWorld ?? "-" },
   ];
