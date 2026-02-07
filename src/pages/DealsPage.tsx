@@ -65,7 +65,7 @@ export function DealsPage() {
               <th className="px-4 py-3 font-medium">物品</th>
               <th className="px-4 py-3 font-medium">伺服器</th>
               <th className="px-4 py-3 font-medium">現價</th>
-              <th className="px-4 py-3 font-medium">均價</th>
+              <th className="px-4 py-3 font-medium">最高底價</th>
               <th className="px-4 py-3 font-medium">折扣</th>
             </tr>
           </thead>
