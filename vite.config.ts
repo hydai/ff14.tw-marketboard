@@ -13,7 +13,7 @@ export default defineConfig({
   server: {
     proxy: {
       "/api": {
-        target: "http://localhost:8787",
+        target: "https://marketboard-api.ff14.tw",
         changeOrigin: true,
       },
     },
