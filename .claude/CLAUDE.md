@@ -46,6 +46,10 @@ Non-landing routes use `React.lazy()` in `App.tsx`. Recharts is only bundled in 
 
 The `getItem` API returns `priceSummary` from either KV cache (camelCase `PriceSummaryKV`) or D1 fallback (snake_case `PriceSummaryD1`). Always use `normalizePriceSummary()` from `src/lib/format.ts` to get a consistent `PriceSummary` type.
 
+### Cheapest World
+
+`PriceSummary.cheapestWorld` is resolved server-side (backend compares NQ and HQ min prices, picks the overall cheapest). The frontend simply displays it via `summary?.cheapestWorld ?? "-"` in `PriceSummaryCards.tsx`. If it shows "-", the issue is in the backend processors, not the frontend.
+
 ### HQ Field
 
 D1 returns `hq` as `number` (0 or 1), NOT boolean. Always compare with `=== 1`.
