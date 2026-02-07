@@ -9,13 +9,13 @@ React SPA dashboard for FF14 Taiwan datacenter (陸行鳥) market board data. De
 - React 19, TypeScript 5, Vite 6
 - TailwindCSS 4 (CSS-first config via `@theme` in `src/app.css`, no `tailwind.config.js`)
 - React Router 7, TanStack React Query 5, Recharts 2
-- Cloudflare Pages (static SPA)
+- GitHub Pages (static SPA, deployed via GitHub Actions)
 
 ## Commands
 
 ```bash
 npm run dev        # Vite dev server on :5173, proxies /api to marketboard-api.ff14.tw
-npm run build      # tsc -b && vite build → dist/
+npm run build      # tsc -b && vite build → dist/, copies 404.html for SPA routing
 npm run preview    # Preview production build
 npm run typecheck  # tsc --noEmit
 ```
@@ -62,7 +62,7 @@ Use `getHistoryTimestamp(point, resolution)` from `src/lib/format.ts`.
 ### API Base URL
 
 - Dev: `VITE_API_BASE` is empty, Vite proxy handles `/api/*` → `https://marketboard-api.ff14.tw`
-- Production: `VITE_API_BASE=https://marketboard-api.ff14.tw` set as Cloudflare Pages env var
+- Production: `VITE_API_BASE=https://marketboard-api.ff14.tw` set in `.env.production` (read by Vite at build time)
 
 ## Conventions
 
@@ -75,13 +75,13 @@ Use `getHistoryTimestamp(point, resolution)` from `src/lib/format.ts`.
 
 ## Deployment
 
-Cloudflare Pages with GitHub integration. No `wrangler.toml` needed — Pages auto-builds from `master` branch.
+GitHub Pages with GitHub Actions. Workflow at `.github/workflows/deploy.yml` builds and deploys on push to `master`.
 
-Build settings (configured in Cloudflare Dashboard):
-- Build command: `npm run build`
-- Build output directory: `dist`
-- NODE_VERSION: `20`
-- VITE_API_BASE: `https://marketboard-api.ff14.tw`
+- Custom domain: `marketboard.ff14.tw` (configured via `public/CNAME` and GitHub repo settings)
+- DNS: CNAME record pointing `marketboard.ff14.tw` → `hydai.github.io`
+- SPA routing: `dist/404.html` is a copy of `index.html` so direct URL access works with React Router
+- Env vars: `VITE_API_BASE` set in `.env.production` (committed, not secret)
+- `public/.nojekyll` skips Jekyll processing to avoid issues with `_`-prefixed asset files
 
 ## API Reference
 
