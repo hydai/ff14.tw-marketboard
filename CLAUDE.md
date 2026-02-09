@@ -107,3 +107,20 @@ Key reference files:
 - `../ff14.tw-marketboard-api/src/api/handlers/*.ts` — Response shapes per endpoint
 - `../ff14.tw-marketboard-api/src/config/datacenters.ts` — 8 worlds data
 - `../ff14.tw-marketboard-api/migrations/0001_initial_schema.sql` — DB schema
+
+## Frontend Aesthetics
+
+Avoid generic "AI slop" aesthetics. Make creative, distinctive frontends that surprise and delight.
+
+- **Typography**: Choose beautiful, unique fonts. Avoid generic families (Inter, Roboto, Arial, system fonts). Pick distinctive choices that elevate the design.
+- **Color & Theme**: Commit to a cohesive aesthetic. Use CSS variables for consistency. Dominant colors with sharp accents outperform timid, evenly-distributed palettes. Draw from IDE themes and cultural aesthetics for inspiration.
+- **Motion**: Use animations for effects and micro-interactions. Prioritize CSS-only solutions for HTML. Use Motion library for React when available. Focus on high-impact moments: one well-orchestrated page load with staggered reveals (`animation-delay`) creates more delight than scattered micro-interactions.
+- **Backgrounds**: Create atmosphere and depth rather than defaulting to solid colors. Layer CSS gradients, use geometric patterns, or add contextual effects that match the overall aesthetic.
+
+Avoid these cliches:
+- Overused font families (Inter, Roboto, Arial, Space Grotesk, system fonts)
+- Purple gradients on white backgrounds
+- Predictable layouts and cookie-cutter component patterns
+- Designs that lack context-specific character
+
+Interpret creatively and make unexpected choices that feel genuinely designed for the context. Vary between light and dark themes, different fonts, different aesthetics. Think outside the box — do not converge on common choices across generations.
