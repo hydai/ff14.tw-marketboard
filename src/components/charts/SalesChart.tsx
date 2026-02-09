@@ -40,42 +40,43 @@ export function SalesChart({ itemId }: SalesChartProps) {
   };
 
   return (
-    <div className="rounded-lg border border-zinc-800 bg-zinc-900 p-4">
-      <h3 className="mb-4 text-sm font-medium text-zinc-300">近期成交紀錄</h3>
+    <div className="rounded-lg border border-obsidian-800 bg-obsidian-900/80 p-4 backdrop-blur-sm">
+      <h3 className="mb-4 font-heading text-sm font-medium text-obsidian-300">近期成交紀錄</h3>
 
       {isLoading ? (
-        <div className="flex h-64 items-center justify-center text-zinc-500">
+        <div className="flex h-64 items-center justify-center text-obsidian-500">
           載入中...
         </div>
       ) : (
         <ResponsiveContainer width="100%" height={300}>
           <ScatterChart>
-            <CartesianGrid strokeDasharray="3 3" stroke="#3f3f46" />
+            <CartesianGrid strokeDasharray="3 3" stroke="#3d3730" />
             <XAxis
               dataKey="time"
               type="number"
               domain={["dataMin", "dataMax"]}
               tickFormatter={formatXAxis}
-              tick={{ fill: "#a1a1aa", fontSize: 11 }}
-              stroke="#3f3f46"
+              tick={{ fill: "#a8a29e", fontSize: 11, fontFamily: "JetBrains Mono" }}
+              stroke="#3d3730"
               name="時間"
             />
             <YAxis
               dataKey="price"
               type="number"
               tickFormatter={(v: number) => formatGil(v)}
-              tick={{ fill: "#a1a1aa", fontSize: 11 }}
-              stroke="#3f3f46"
+              tick={{ fill: "#a8a29e", fontSize: 11, fontFamily: "JetBrains Mono" }}
+              stroke="#3d3730"
               width={80}
               name="單價"
             />
             <Tooltip
               contentStyle={{
-                backgroundColor: "#18181b",
-                border: "1px solid #3f3f46",
+                backgroundColor: "#1a1714",
+                border: "1px solid #3d3730",
                 borderRadius: 8,
+                fontFamily: "JetBrains Mono",
               }}
-              labelStyle={{ color: "#a1a1aa" }}
+              labelStyle={{ color: "#a8a29e" }}
               formatter={(value: number, name: string) => {
                 if (name === "單價") return [formatGil(value), name];
                 if (name === "數量") return [value, name];
@@ -95,7 +96,7 @@ export function SalesChart({ itemId }: SalesChartProps) {
             <Scatter
               name="HQ"
               data={hqData}
-              fill="#22d3ee"
+              fill="#38bdf8"
             />
           </ScatterChart>
         </ResponsiveContainer>

@@ -34,16 +34,17 @@ export function PriceSummaryCards({ itemId }: PriceSummaryCardsProps) {
 
   return (
     <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
-      {cards.map((card) => (
+      {cards.map((card, i) => (
         <div
           key={card.label}
-          className="rounded-lg border border-zinc-800 bg-zinc-900 p-4"
+          className="animate-reveal rounded-lg border border-obsidian-800 bg-obsidian-900/80 p-4 backdrop-blur-sm"
+          style={{ animationDelay: `${i * 0.05}s` }}
         >
-          <p className="text-xs text-zinc-400">{card.label}</p>
+          <p className="text-xs uppercase tracking-wider text-obsidian-400">{card.label}</p>
           {card.text ? (
-            <p className="mt-1 text-lg font-bold text-gold-400">{card.text}</p>
+            <p className="mt-1 font-mono text-lg font-bold text-gold-400">{card.text}</p>
           ) : card.raw ? (
-            <p className="mt-1 text-lg font-bold text-zinc-100">
+            <p className="mt-1 font-mono text-lg font-bold text-obsidian-100">
               {card.value != null ? card.value.toLocaleString("zh-TW") : "-"}
             </p>
           ) : (

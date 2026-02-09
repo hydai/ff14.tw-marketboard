@@ -25,20 +25,20 @@ export function SystemStatusCard() {
       <div className="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm">
         <div className="flex items-center gap-2">
           <span
-            className={`inline-block h-2.5 w-2.5 rounded-full ${isOk ? "bg-emerald-400" : "bg-red-400"}`}
+            className={`inline-block h-2.5 w-2.5 rounded-full ${isOk ? "bg-aether-400 animate-glow-pulse text-aether-400" : "bg-ember-400 animate-glow-pulse text-ember-400"}`}
           />
-          <span className="text-zinc-300">
+          <span className="text-obsidian-300">
             {isOk ? "正常運作" : "異常"}
           </span>
         </div>
-        <div className="text-zinc-400">
-          資料中心：<span className="text-zinc-200">{data?.datacenter ?? "-"}</span>
+        <div className="text-obsidian-400">
+          資料中心：<span className="text-obsidian-200">{data?.datacenter ?? "-"}</span>
         </div>
-        <div className="text-zinc-400">
-          伺服器數量：<span className="text-zinc-200">{data?.worlds ?? "-"}</span>
+        <div className="text-obsidian-400">
+          伺服器數量：<span className="text-obsidian-200">{data?.worlds ?? "-"}</span>
         </div>
-        <div className="text-zinc-400">
-          最後更新：<span className="text-zinc-200">{formatRelativeTime(data?.lastPollTime)}</span>
+        <div className="text-obsidian-400">
+          最後更新：<span className="text-obsidian-200">{formatRelativeTime(data?.lastPollTime)}</span>
         </div>
       </div>
     </Card>

@@ -34,7 +34,7 @@ export function ItemDetailPage() {
   if (!item) {
     return (
       <PageShell title="找不到物品">
-        <p className="text-zinc-500">此物品不存在或已被移除。</p>
+        <p className="text-obsidian-500">此物品不存在或已被移除。</p>
       </PageShell>
     );
   }
@@ -42,33 +42,35 @@ export function ItemDetailPage() {
   return (
     <PageShell title={getItemNameZh(itemId, item.name_zh)}>
       <div className="flex flex-wrap items-center gap-3">
-        <p className="text-sm text-zinc-400">{item.name_en}</p>
+        <p className="text-sm text-obsidian-400">{item.name_en}</p>
         {item.category_name && (
-          <span className="rounded bg-zinc-800 px-2 py-0.5 text-xs text-zinc-400">
+          <span className="rounded bg-obsidian-800 px-2 py-0.5 text-xs text-obsidian-400">
             {item.category_name}
           </span>
         )}
         {item.is_hq_available === 1 && (
-          <span className="rounded bg-cyan-900/50 px-2 py-0.5 text-xs text-cyan-400">
+          <span className="rounded bg-crystal-900/50 px-2 py-0.5 text-xs text-crystal-400 ring-1 ring-crystal-400/20">
             HQ 可用
           </span>
         )}
       </div>
 
-      <PriceSummaryCards itemId={itemId} />
+      <div className="animate-reveal d1">
+        <PriceSummaryCards itemId={itemId} />
+      </div>
 
-      <div className="grid gap-4 lg:grid-cols-2">
+      <div className="animate-reveal d2 grid gap-4 lg:grid-cols-2">
         <PriceHistoryChart itemId={itemId} />
         <SalesChart itemId={itemId} />
       </div>
 
-      <div>
-        <h2 className="mb-3 text-lg font-semibold text-zinc-100">跨服價格比較</h2>
+      <div className="animate-reveal d3">
+        <h2 className="mb-3 font-heading text-lg font-semibold text-obsidian-100">跨服價格比較</h2>
         <WorldPriceTable itemId={itemId} />
       </div>
 
-      <div>
-        <h2 className="mb-3 text-lg font-semibold text-zinc-100">所有上架</h2>
+      <div className="animate-reveal d4">
+        <h2 className="mb-3 font-heading text-lg font-semibold text-obsidian-100">所有上架</h2>
         <ListingsTable itemId={itemId} />
       </div>
     </PageShell>

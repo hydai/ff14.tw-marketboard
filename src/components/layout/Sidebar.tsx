@@ -1,22 +1,22 @@
 import { NavLink } from "react-router";
 
 const navItems = [
-  { to: "/", label: "市場總覽", icon: "📊" },
-  { to: "/search", label: "物品搜尋", icon: "🔍" },
-  { to: "/arbitrage", label: "跨服套利", icon: "💰" },
-  { to: "/deals", label: "撿漏排行", icon: "🏷️" },
-  { to: "/trending", label: "趨勢分析", icon: "📈" },
-  { to: "/tax-rates", label: "稅率資訊", icon: "🏛️" },
+  { to: "/", label: "市場總覽", icon: "✦" },
+  { to: "/search", label: "物品搜尋", icon: "⌘" },
+  { to: "/arbitrage", label: "跨服套利", icon: "⚔" },
+  { to: "/deals", label: "撿漏排行", icon: "⬦" },
+  { to: "/trending", label: "趨勢分析", icon: "↗" },
+  { to: "/tax-rates", label: "稅率資訊", icon: "⚖" },
 ];
 
 export function Sidebar() {
   return (
-    <aside className="fixed left-0 top-0 z-40 flex h-screen w-56 flex-col border-r border-zinc-800 bg-zinc-950">
-      <div className="flex items-center gap-2 border-b border-zinc-800 px-4 py-4">
-        <span className="text-2xl">🐥</span>
+    <aside className="fixed left-0 top-0 z-40 flex h-screen w-56 flex-col border-r border-obsidian-800 bg-gradient-to-b from-obsidian-950 via-obsidian-900 to-obsidian-950">
+      <div className="flex items-center gap-3 border-b border-obsidian-800 px-4 py-4">
+        <span className="text-shimmer text-2xl font-display">&#x2726;</span>
         <div>
-          <h1 className="text-sm font-bold text-gold-400">陸行鳥</h1>
-          <p className="text-xs text-zinc-500">市場板</p>
+          <h1 className="font-heading text-sm font-bold text-gold-400">陸行鳥</h1>
+          <p className="font-mono text-[10px] uppercase tracking-widest text-obsidian-500">Market Board</p>
         </div>
       </div>
 
@@ -30,12 +30,12 @@ export function Sidebar() {
                 className={({ isActive }) =>
                   `flex items-center gap-3 rounded-lg px-3 py-2 text-sm transition-colors ${
                     isActive
-                      ? "bg-zinc-800 text-gold-400"
-                      : "text-zinc-400 hover:bg-zinc-900 hover:text-zinc-200"
+                      ? "border-l-2 border-gold-500 bg-gold-500/5 text-gold-400"
+                      : "border-l-2 border-transparent text-obsidian-400 hover:bg-obsidian-800/50 hover:text-obsidian-200"
                   }`
                 }
               >
-                <span>{item.icon}</span>
+                <span className="text-xs">{item.icon}</span>
                 <span>{item.label}</span>
               </NavLink>
             </li>
@@ -43,8 +43,8 @@ export function Sidebar() {
         </ul>
       </nav>
 
-      <div className="border-t border-zinc-800 px-4 py-3">
-        <p className="text-xs text-zinc-600">資料來源：Universalis</p>
+      <div className="border-t border-obsidian-800 px-4 py-3">
+        <p className="font-mono text-[10px] uppercase tracking-wider text-obsidian-600">資料來源：Universalis</p>
       </div>
     </aside>
   );

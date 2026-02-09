@@ -42,7 +42,6 @@ export function WorldPriceTable({ itemId }: WorldPriceTableProps) {
     });
   }
 
-  // Find the cheapest overall NQ price to highlight that world
   let cheapestNQ = Infinity;
   for (const w of worlds) {
     if (w.minNQ != null && w.minNQ < cheapestNQ) {
@@ -51,9 +50,9 @@ export function WorldPriceTable({ itemId }: WorldPriceTableProps) {
   }
 
   return (
-    <div className="overflow-x-auto rounded-lg border border-zinc-800">
+    <div className="overflow-x-auto rounded-lg border border-obsidian-800">
       <table className="w-full text-left text-sm">
-        <thead className="border-b border-zinc-800 bg-zinc-900/50 text-xs uppercase text-zinc-400">
+        <thead className="border-b border-obsidian-800 bg-obsidian-900/50 text-xs uppercase tracking-wider text-obsidian-400">
           <tr>
             <th className="px-4 py-3">伺服器</th>
             <th className="px-4 py-3">最低NQ價</th>
@@ -61,10 +60,10 @@ export function WorldPriceTable({ itemId }: WorldPriceTableProps) {
             <th className="px-4 py-3">上架數</th>
           </tr>
         </thead>
-        <tbody className="divide-y divide-zinc-800">
+        <tbody className="divide-y divide-obsidian-800">
           {worlds.length === 0 ? (
             <tr>
-              <td colSpan={4} className="px-4 py-8 text-center text-zinc-500">
+              <td colSpan={4} className="px-4 py-8 text-center text-obsidian-500">
                 無資料
               </td>
             </tr>
@@ -78,11 +77,11 @@ export function WorldPriceTable({ itemId }: WorldPriceTableProps) {
                   className={
                     isCheapest
                       ? "bg-gold-500/10"
-                      : "bg-zinc-900 transition-colors hover:bg-zinc-800"
+                      : "bg-obsidian-900 transition-colors hover:bg-gold-500/[0.03]"
                   }
                 >
                   <td
-                    className={`px-4 py-3 font-medium ${isCheapest ? "text-gold-400" : "text-zinc-200"}`}
+                    className={`px-4 py-3 font-medium ${isCheapest ? "text-gold-400" : "text-obsidian-200"}`}
                   >
                     {w.world_name}
                   </td>
@@ -92,7 +91,7 @@ export function WorldPriceTable({ itemId }: WorldPriceTableProps) {
                   <td className="px-4 py-3">
                     <GilAmount amount={w.minHQ} />
                   </td>
-                  <td className="px-4 py-3 text-zinc-300">{w.count}</td>
+                  <td className="px-4 py-3 font-mono text-obsidian-300">{w.count}</td>
                 </tr>
               );
             })

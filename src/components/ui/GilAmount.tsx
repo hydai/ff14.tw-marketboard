@@ -5,5 +5,5 @@ interface GilAmountProps {
 }
 
 export function GilAmount({ amount }: GilAmountProps) {
-  return <span className="text-gold-400">{formatGil(amount)}</span>;
+  return <span className="font-mono text-shimmer">{formatGil(amount)}</span>;
 }

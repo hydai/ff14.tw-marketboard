@@ -15,7 +15,7 @@ export function Select({ value, onChange, options, className = "" }: SelectProps
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className={`rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 ${className}`}
+      className={`rounded-lg border border-obsidian-800 bg-obsidian-900 px-3 py-2 text-sm text-obsidian-100 outline-none transition-shadow focus:border-gold-500 focus:ring-1 focus:ring-gold-500 focus:shadow-[0_0_12px_rgba(251,191,36,0.06)] ${className}`}
     >
       {options.map((opt) => (
         <option key={opt.value} value={opt.value}>

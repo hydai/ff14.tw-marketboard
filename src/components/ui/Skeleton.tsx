@@ -5,7 +5,7 @@ interface SkeletonProps {
 export function Skeleton({ className = "" }: SkeletonProps) {
   return (
     <div
-      className={`animate-pulse rounded bg-zinc-800 ${className}`}
+      className={`animate-skeleton rounded ${className}`}
     />
   );
 }

@@ -32,7 +32,7 @@ export function SearchInput({
       value={local}
       onChange={(e) => setLocal(e.target.value)}
       placeholder={placeholder}
-      className="w-full rounded-lg border border-zinc-800 bg-zinc-900 px-4 py-2 text-sm text-zinc-100 placeholder-zinc-500 outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500"
+      className="w-full rounded-lg border border-obsidian-800 bg-obsidian-900 px-4 py-2 text-sm text-obsidian-100 placeholder-obsidian-500 outline-none transition-shadow focus:border-gold-500 focus:ring-1 focus:ring-gold-500 focus:shadow-[0_0_12px_rgba(251,191,36,0.06)]"
     />
   );
 }

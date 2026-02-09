@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  /* Gold palette (preserved) */
   --color-gold-50: #fffbeb;
   --color-gold-100: #fef3c7;
   --color-gold-200: #fde68a;
@@ -12,29 +13,163 @@
   --color-gold-800: #92400e;
   --color-gold-900: #78350f;
 
+  /* Obsidian palette — warm near-blacks (stone-tinted) */
+  --color-obsidian-950: #0c0a09;
+  --color-obsidian-900: #1a1714;
+  --color-obsidian-850: #1f1c18;
+  --color-obsidian-800: #292524;
+  --color-obsidian-700: #3d3730;
+  --color-obsidian-600: #57534e;
+  --color-obsidian-500: #78716c;
+  --color-obsidian-400: #a8a29e;
+  --color-obsidian-300: #d6d3d1;
+  --color-obsidian-200: #e7e5e4;
+  --color-obsidian-100: #f5f5f4;
+
+  /* Semantic accent: crystal (sky-blue, HQ) */
+  --color-crystal-400: #38bdf8;
+  --color-crystal-900: #0c4a6e;
+
+  /* Semantic accent: aether (green, profit) */
+  --color-aether-400: #4ade80;
+  --color-aether-900: #14532d;
+
+  /* Semantic accent: ember (red, loss) */
+  --color-ember-400: #f87171;
+  --color-ember-900: #7f1d1d;
+
+  /* Font families */
   --font-sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei",
     "Segoe UI", system-ui, -apple-system, sans-serif;
+  --font-display: "Cinzel", "Georgia", serif;
+  --font-heading: "LXGW WenKai TC", "Noto Sans TC", serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", ui-monospace,
+    monospace;
 }
 
 body {
   font-family: var(--font-sans);
+  background:
+    radial-gradient(ellipse 80% 60% at 15% 10%, rgba(251, 191, 36, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 90%, rgba(56, 189, 248, 0.02) 0%, transparent 60%),
+    repeating-linear-gradient(
+      180deg,
+      transparent,
+      transparent 59px,
+      rgba(251, 191, 36, 0.015) 59px,
+      rgba(251, 191, 36, 0.015) 60px
+    ),
+    var(--color-obsidian-950);
 }
 
-/* Scrollbar styling for dark theme */
+/* Main content vignette */
+main {
+  background: radial-gradient(
+    ellipse 100% 100% at 50% 50%,
+    transparent 50%,
+    rgba(12, 10, 9, 0.4) 100%
+  );
+}
+
+/* ─── Animation keyframes ─── */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 4px currentColor; }
+  50% { box-shadow: 0 0 10px currentColor; }
+}
+
+@keyframes skeletonShine {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ─── Utility classes ─── */
+.animate-reveal {
+  animation: fadeInUp 0.5s ease-out both;
+}
+.animate-reveal.d1 { animation-delay: 0.05s; }
+.animate-reveal.d2 { animation-delay: 0.1s; }
+.animate-reveal.d3 { animation-delay: 0.15s; }
+.animate-reveal.d4 { animation-delay: 0.2s; }
+.animate-reveal.d5 { animation-delay: 0.25s; }
+.animate-reveal.d6 { animation-delay: 0.3s; }
+
+.animate-fade-in {
+  animation: fadeIn 0.4s ease-out both;
+}
+
+.animate-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-obsidian-800) 25%,
+    var(--color-obsidian-700) 50%,
+    var(--color-obsidian-800) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShine 1.5s ease-in-out infinite;
+}
+
+.animate-glow-pulse {
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+.hover-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.text-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-gold-400) 0%,
+    var(--color-gold-200) 50%,
+    var(--color-gold-400) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+}
+
+/* ─── Scrollbar styling ─── */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: theme(--color-zinc-900);
+  background: var(--color-obsidian-900);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: theme(--color-zinc-700);
+  background: var(--color-obsidian-700);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: theme(--color-zinc-600);
+  background: var(--color-obsidian-600);
 }

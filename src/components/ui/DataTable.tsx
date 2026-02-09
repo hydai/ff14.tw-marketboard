@@ -23,18 +23,18 @@ export function DataTable<T>({
     <div className="overflow-x-auto">
       <table className="w-full text-sm">
         <thead>
-          <tr className="bg-zinc-800/50">
+          <tr className="bg-obsidian-800/50">
             {columns.map((col) => (
               <th
                 key={col.key}
-                className="px-4 py-2.5 text-left font-medium text-zinc-400"
+                className="px-4 py-2.5 text-left text-xs font-medium uppercase tracking-wider text-obsidian-400"
               >
                 {col.header}
               </th>
             ))}
           </tr>
         </thead>
-        <tbody className="divide-y divide-zinc-800/50">
+        <tbody className="divide-y divide-obsidian-800/50">
           {isLoading
             ? Array.from({ length: 5 }).map((_, i) => (
                 <tr key={i}>
@@ -50,7 +50,7 @@ export function DataTable<T>({
                 <tr>
                   <td
                     colSpan={columns.length}
-                    className="px-4 py-8 text-center text-zinc-500"
+                    className="px-4 py-8 text-center text-obsidian-500"
                   >
                     {emptyMessage}
                   </td>
@@ -59,10 +59,10 @@ export function DataTable<T>({
               : data.map((row, i) => (
                 <tr
                   key={i}
-                  className="transition-colors hover:bg-zinc-800/30"
+                  className="transition-colors hover:bg-gold-500/[0.03]"
                 >
                   {columns.map((col) => (
-                    <td key={col.key} className="px-4 py-2.5 text-zinc-300">
+                    <td key={col.key} className="px-4 py-2.5 text-obsidian-300">
                       {col.render
                         ? col.render(row)
                         : String((row as Record<string, unknown>)[col.key] ?? "")}

@@ -41,13 +41,13 @@ export function SearchPage() {
             setPage(1);
           }}
           placeholder="分類 ID（選填）"
-          className="w-40 rounded-lg border border-zinc-800 bg-zinc-900 px-3 py-2 text-sm text-zinc-100 placeholder-zinc-500 outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500"
+          className="w-40 rounded-lg border border-obsidian-800 bg-obsidian-900 px-3 py-2 text-sm text-obsidian-100 placeholder-obsidian-500 outline-none transition-shadow focus:border-gold-500 focus:ring-1 focus:ring-gold-500 focus:shadow-[0_0_12px_rgba(251,191,36,0.06)]"
         />
       </div>
 
-      <div className="overflow-x-auto rounded-lg border border-zinc-800">
+      <div className="overflow-x-auto rounded-lg border border-obsidian-800">
         <table className="w-full text-left text-sm">
-          <thead className="border-b border-zinc-800 bg-zinc-900/50 text-xs uppercase text-zinc-400">
+          <thead className="border-b border-obsidian-800 bg-obsidian-900/50 text-xs uppercase tracking-wider text-obsidian-400">
             <tr>
               <th className="px-4 py-3">物品名稱</th>
               <th className="px-4 py-3">英文名</th>
@@ -55,10 +55,10 @@ export function SearchPage() {
               <th className="px-4 py-3">HQ</th>
             </tr>
           </thead>
-          <tbody className="divide-y divide-zinc-800">
+          <tbody className="divide-y divide-obsidian-800">
             {!data.data.length ? (
               <tr>
-                <td colSpan={4} className="px-4 py-8 text-center text-zinc-500">
+                <td colSpan={4} className="px-4 py-8 text-center text-obsidian-500">
                   無搜尋結果
                 </td>
               </tr>
@@ -66,7 +66,7 @@ export function SearchPage() {
               data.data.map((item) => (
                 <tr
                   key={item.item_id}
-                  className="bg-zinc-900 transition-colors hover:bg-zinc-800"
+                  className="bg-obsidian-900 transition-colors hover:bg-gold-500/[0.03]"
                 >
                   <td className="px-4 py-3">
                     <Link
@@ -76,13 +76,13 @@ export function SearchPage() {
                       {item.name_zh}
                     </Link>
                   </td>
-                  <td className="px-4 py-3 text-zinc-300">{item.name_en}</td>
-                  <td className="px-4 py-3 text-zinc-400">
+                  <td className="px-4 py-3 text-obsidian-300">{item.name_en}</td>
+                  <td className="px-4 py-3 text-obsidian-400">
                     {item.category_name ?? "-"}
                   </td>
                   <td className="px-4 py-3">
                     {item.is_hq_available === 1 && (
-                      <span className="rounded bg-cyan-900/50 px-2 py-0.5 text-xs text-cyan-400">
+                      <span className="rounded bg-crystal-900/50 px-2 py-0.5 text-xs text-crystal-400 ring-1 ring-crystal-400/20">
                         HQ
                       </span>
                     )}

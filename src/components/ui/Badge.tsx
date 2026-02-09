@@ -8,10 +8,10 @@ interface BadgeProps {
 }
 
 const variantClasses: Record<BadgeVariant, string> = {
-  default: "bg-zinc-800 text-zinc-300",
-  hq: "bg-cyan-900/50 text-cyan-400",
-  profit: "bg-emerald-900/50 text-emerald-400",
-  loss: "bg-red-900/50 text-red-400",
+  default: "bg-obsidian-800 text-obsidian-300 ring-1 ring-obsidian-700",
+  hq: "bg-crystal-900/50 text-crystal-400 ring-1 ring-crystal-400/20",
+  profit: "bg-aether-900/50 text-aether-400 ring-1 ring-aether-400/20",
+  loss: "bg-ember-900/50 text-ember-400 ring-1 ring-ember-400/20",
 };
 
 export function Badge({ children, variant = "default" }: BadgeProps) {

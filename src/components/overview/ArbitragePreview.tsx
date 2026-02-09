@@ -18,7 +18,7 @@ const columns: Column<ArbitrageItem>[] = [
     header: "買入",
     render: (row) => (
       <span>
-        <span className="text-zinc-400">{row.buy_world} </span>
+        <span className="text-obsidian-400">{row.buy_world} </span>
         <GilAmount amount={row.buy_price} />
       </span>
     ),
@@ -28,7 +28,7 @@ const columns: Column<ArbitrageItem>[] = [
     header: "賣出",
     render: (row) => (
       <span>
-        <span className="text-zinc-400">{row.sell_world} </span>
+        <span className="text-obsidian-400">{row.sell_world} </span>
         <GilAmount amount={row.sell_price} />
       </span>
     ),
@@ -39,7 +39,7 @@ const columns: Column<ArbitrageItem>[] = [
     render: (row) => (
       <span>
         <GilAmount amount={row.profit} />
-        <span className="ml-1 text-emerald-400 text-xs">
+        <span className="ml-1 text-aether-400 text-xs font-mono">
           {formatPercent(row.profit_pct)}
         </span>
       </span>

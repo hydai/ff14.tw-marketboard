@@ -16,7 +16,7 @@ const columns: Column<VelocityItem>[] = [
     key: "sales_per_day",
     header: "日均銷量",
     render: (row) => (
-      <span className="text-zinc-200">{row.sales_per_day.toFixed(1)}</span>
+      <span className="font-mono text-obsidian-200">{row.sales_per_day.toFixed(1)}</span>
     ),
   },
   {

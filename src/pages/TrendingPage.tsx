@@ -18,15 +18,15 @@ export function TrendingPage() {
     <PageShell title="趨勢分析">
       <div className="flex flex-wrap gap-6">
         <div className="flex flex-col gap-1">
-          <span className="text-sm text-zinc-400">方向</span>
-          <div className="flex overflow-hidden rounded-md border border-zinc-700">
+          <span className="text-sm text-obsidian-400">方向</span>
+          <div className="flex overflow-hidden rounded-md border border-obsidian-700">
             {TREND_DIRECTIONS.map((d) => (
               <button
                 key={d.value}
                 className={`px-4 py-1.5 text-sm transition-colors ${
                   direction === d.value
                     ? "bg-gold-500/20 text-gold-400"
-                    : "bg-zinc-800 text-zinc-400 hover:text-zinc-200"
+                    : "bg-obsidian-800 text-obsidian-400 hover:text-obsidian-200"
                 }`}
                 onClick={() => setDirection(d.value)}
               >
@@ -36,15 +36,15 @@ export function TrendingPage() {
           </div>
         </div>
         <div className="flex flex-col gap-1">
-          <span className="text-sm text-zinc-400">週期</span>
-          <div className="flex overflow-hidden rounded-md border border-zinc-700">
+          <span className="text-sm text-obsidian-400">週期</span>
+          <div className="flex overflow-hidden rounded-md border border-obsidian-700">
             {TREND_PERIODS.map((p) => (
               <button
                 key={p.value}
                 className={`px-4 py-1.5 text-sm transition-colors ${
                   period === p.value
                     ? "bg-gold-500/20 text-gold-400"
-                    : "bg-zinc-800 text-zinc-400 hover:text-zinc-200"
+                    : "bg-obsidian-800 text-obsidian-400 hover:text-obsidian-200"
                 }`}
                 onClick={() => setPeriod(p.value)}
               >
@@ -55,10 +55,10 @@ export function TrendingPage() {
         </div>
       </div>
 
-      <div className="overflow-x-auto rounded-lg border border-zinc-800 bg-zinc-900">
+      <div className="overflow-x-auto rounded-lg border border-obsidian-800 bg-obsidian-900">
         <table className="w-full text-sm">
           <thead>
-            <tr className="border-b border-zinc-800 text-left text-zinc-400">
+            <tr className="border-b border-obsidian-800 text-left text-xs uppercase tracking-wider text-obsidian-400">
               <th className="px-4 py-3 font-medium">物品</th>
               <th className="px-4 py-3 font-medium">現價</th>
               <th className="px-4 py-3 font-medium">前期價</th>
@@ -68,17 +68,17 @@ export function TrendingPage() {
           <tbody>
             {isLoading &&
               Array.from({ length: 8 }).map((_, i) => (
-                <tr key={i} className="border-b border-zinc-800/50">
+                <tr key={i} className="border-b border-obsidian-800/50">
                   {Array.from({ length: 4 }).map((_, j) => (
                     <td key={j} className="px-4 py-3">
-                      <div className="h-4 w-20 animate-pulse rounded bg-zinc-800" />
+                      <div className="animate-skeleton h-4 w-20 rounded" />
                     </td>
                   ))}
                 </tr>
               ))}
             {!isLoading && items.length === 0 && (
               <tr>
-                <td colSpan={4} className="px-4 py-12 text-center text-zinc-500">
+                <td colSpan={4} className="px-4 py-12 text-center text-obsidian-500">
                   目前沒有趨勢資料
                 </td>
               </tr>
@@ -86,7 +86,7 @@ export function TrendingPage() {
             {items.map((item) => (
               <tr
                 key={item.item_id}
-                className="border-b border-zinc-800/50 hover:bg-zinc-800/30"
+                className="border-b border-obsidian-800/50 hover:bg-gold-500/[0.03]"
               >
                 <td className="px-4 py-3">
                   <Link
@@ -96,11 +96,11 @@ export function TrendingPage() {
                     {getItemNameZh(item.item_id, item.item_name)}
                   </Link>
                 </td>
-                <td className="px-4 py-3 text-zinc-300">{formatGil(item.current_price)}</td>
-                <td className="px-4 py-3 text-zinc-300">{formatGil(item.previous_price)}</td>
+                <td className="px-4 py-3 font-mono text-obsidian-300">{formatGil(item.current_price)}</td>
+                <td className="px-4 py-3 font-mono text-obsidian-300">{formatGil(item.previous_price)}</td>
                 <td
-                  className={`px-4 py-3 ${
-                    item.change_pct >= 0 ? "text-emerald-400" : "text-red-400"
+                  className={`px-4 py-3 font-mono ${
+                    item.change_pct >= 0 ? "text-aether-400" : "text-ember-400"
                   }`}
                 >
                   {item.change_pct > 0 ? "+" : ""}
